@@ -13,7 +13,7 @@ import dev.nextftc.core.components.SubsystemComponent;
 import dev.nextftc.ftc.NextFTCOpMode;
 import dev.nextftc.ftc.components.BulkReadComponent;
 
-@Autonomous(name = "NextFTC Autonomous Program Java")
+@Autonomous(name = "NextFTC Autonomous Program Java", group = "Bot")
 public class AutonomousProgram extends NextFTCOpMode {
     public AutonomousProgram() {
         addComponents(
@@ -38,7 +38,5 @@ public class AutonomousProgram extends NextFTCOpMode {
     }
 
     @Override
-    public void onStartButtonPressed() {
-        autonomousRoutine().schedule();
-    }
+    public void onStartButtonPressed() { autonomousRoutine().schedule(); }
 }

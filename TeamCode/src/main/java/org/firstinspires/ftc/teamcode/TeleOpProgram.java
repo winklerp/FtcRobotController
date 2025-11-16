@@ -27,7 +27,7 @@ import dev.nextftc.hardware.impl.Direction;
 import dev.nextftc.hardware.impl.IMUEx;
 import dev.nextftc.hardware.impl.MotorEx;
 
-@TeleOp(name = "NextFTC TeleOp Program Java")
+@TeleOp(name = "NextFTC TeleOp Program Java", group = "Bot")
 public class TeleOpProgram extends NextFTCOpMode {
     public TeleOpProgram() {
         addComponents(

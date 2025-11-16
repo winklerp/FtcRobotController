@@ -3,25 +3,20 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
-import org.firstinspires.ftc.teamcode.subSystems.Claw;
-import org.firstinspires.ftc.teamcode.subSystems.Lift;
 
-import dev.nextftc.core.commands.Command;
-import dev.nextftc.core.components.BindingsComponent;
-import dev.nextftc.core.components.SubsystemComponent;
 import dev.nextftc.extensions.pedro.PedroComponent;
 import dev.nextftc.extensions.pedro.PedroDriverControlled;
 import dev.nextftc.ftc.Gamepads;
 import dev.nextftc.ftc.NextFTCOpMode;
+import dev.nextftc.ftc.components.BulkReadComponent;
 import dev.nextftc.hardware.driving.DriverControlledCommand;
 
-import static dev.nextftc.extensions.pedro.PedroComponent.follower;
-
-@TeleOp(name = "NextFTC PedroPathing TeleOp Program Java")
+@TeleOp(name = "NextFTC PedroPathing TeleOp Program Java", group = "Bot")
 public class PedroPathingTeleopProgram extends NextFTCOpMode {
     public PedroPathingTeleopProgram() {
         addComponents(
-                new PedroComponent(Constants::createFollower)
+                new PedroComponent(Constants::createFollower),
+                BulkReadComponent.INSTANCE
         );
     }
 
@@ -33,8 +28,6 @@ public class PedroPathingTeleopProgram extends NextFTCOpMode {
                 Gamepads.gamepad1().rightStickX()
         );
         driverControlled.schedule();
-
-        follower().breakFollowing();
     }
 }
 
