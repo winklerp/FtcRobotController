@@ -115,5 +115,7 @@ public class TeleOpProgram extends NextFTCOpMode {
         FateComponent.write("LiftState", Lift.INSTANCE.getState());
     }
 
-    @Override public void onStop() { }
+    @Override public void onStop() {
+
+    }
 }
