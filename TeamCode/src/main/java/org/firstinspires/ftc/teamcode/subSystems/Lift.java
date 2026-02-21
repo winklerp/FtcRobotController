@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.subSystems;
 
 import dev.nextftc.control.ControlSystem;
+import dev.nextftc.control.KineticState;
 import dev.nextftc.core.commands.Command;
 import dev.nextftc.core.subsystems.Subsystem;
 import dev.nextftc.hardware.controllable.RunToPosition;
@@ -29,5 +30,9 @@ public class Lift implements Subsystem {
     @Override
     public void periodic() {
         motor.setPower(controlSystem.calculate(motor.getState()));
+    }
+
+    public KineticState getState() {
+        return motor.getState();
     }
 }
