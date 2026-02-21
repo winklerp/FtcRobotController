@@ -51,8 +51,6 @@ public class TeleOpProgramPanels extends NextFTCOpMode {
     private IMUEx imu = new IMUEx("imu", Direction.UP, Direction.FORWARD).zeroed();
 
     private final JoinedTelemetry joinedTelemetry = new JoinedTelemetry(PanelsTelemetry.INSTANCE.getFtcTelemetry(), telemetry);
-    private final TelemetryWrapper panelTelemetry = PanelsTelemetry.INSTANCE.getFtcTelemetry();
-
     private LightsManager lightManager = PanelsLights.INSTANCE.getLights();
     private ElapsedTime timer = new ElapsedTime();
     private RGBIndicator rgb;
