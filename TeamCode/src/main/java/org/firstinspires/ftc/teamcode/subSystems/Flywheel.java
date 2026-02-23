@@ -15,8 +15,7 @@ public class Flywheel implements Subsystem {
     private final MotorEx motor = new MotorEx("flywheel_motor");
 
     private final PIDController pid = new PIDController(0.005, 0, 0);
-    private final SimpleFeedforward ff = new SimpleFeedforward(
-                            new SimpleFFCoefficients(0.02, 0.01, 0.02));
+    private final SimpleFeedforward ff = new SimpleFeedforward(0.02, 0.01, 0.02);
 
     private double targetVelocity = 0;
 
