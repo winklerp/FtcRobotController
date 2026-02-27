@@ -44,7 +44,7 @@ dependencies {
     implementation 'dev.nextftc:hardware:1.1.0'
     //implementation 'dev.nextftc:control:1.0.0'
     //implementation 'dev.nextftc.control2:control:0.0.1-beta.4'
-    implementation 'dev.nextftc:control2:0.0.1'
+    implementation 'dev.nextftc:control2:0.0.2'
     implementation 'dev.nextftc:bindings:1.0.1'
     implementation 'dev.nextftc.extensions:pedro:1.0.0'
     implementation 'dev.nextftc.extensions:fateweaver:1.0.0'
