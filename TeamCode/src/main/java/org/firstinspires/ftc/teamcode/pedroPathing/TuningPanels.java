@@ -50,27 +50,27 @@ public class TuningPanels extends SelectableOpMode {
     static ArrayList<String> changes = new ArrayList<>();
 
     public TuningPanels() {
-        super("Select a Tuning OpMode", s -> {
-            s.folder("Localization", l -> {
+        super("Select a Tuning OpMode (Panels)", s -> {
+            s.folder("Localization (Panels)", l -> {
                 l.add("Localization Test", LocalizationTest::new);
                 l.add("Forward Tuner", ForwardTuner::new);
                 l.add("Lateral Tuner", LateralTuner::new);
                 l.add("Turn Tuner", TurnTuner::new);
             });
-            s.folder("Automatic", a -> {
+            s.folder("Automatic (Panels)", a -> {
                 a.add("Forward Velocity Tuner", ForwardVelocityTuner::new);
                 a.add("Lateral Velocity Tuner", LateralVelocityTuner::new);
                 a.add("Forward Zero Power Acceleration Tuner", ForwardZeroPowerAccelerationTuner::new);
                 a.add("Lateral Zero Power Acceleration Tuner", LateralZeroPowerAccelerationTuner::new);
             });
-            s.folder("Manual", p -> {
+            s.folder("Manual (Panels)", p -> {
                 p.add("Translational Tuner", TranslationalTuner::new);
                 p.add("Heading Tuner", HeadingTuner::new);
                 p.add("Drive Tuner", DriveTuner::new);
                 p.add("Line Tuner", Line::new);
                 p.add("Centripetal Tuner", CentripetalTuner::new);
             });
-            s.folder("Tests", p -> {
+            s.folder("Tests (Panels)", p -> {
                 p.add("Line", Line::new);
                 p.add("Triangle", Triangle::new);
                 p.add("Circle", Circle::new);
