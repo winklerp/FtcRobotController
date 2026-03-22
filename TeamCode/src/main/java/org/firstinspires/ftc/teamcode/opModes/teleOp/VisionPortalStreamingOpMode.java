@@ -21,7 +21,7 @@ import com.bylazar.camerastream.PanelsCameraStream;
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;
 
-@TeleOp(name = "Camera Teleop Java Panels", group = "Bot")
+@TeleOp(name = "Camera Teleop Java Panels", group = "Samples")
 public class VisionPortalStreamingOpMode extends LinearOpMode {
     public static class CameraStreamProcessor implements VisionProcessor, CameraStreamSource {
         private final AtomicReference<Bitmap> lastFrame =

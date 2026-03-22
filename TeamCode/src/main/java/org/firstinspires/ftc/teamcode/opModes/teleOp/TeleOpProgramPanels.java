@@ -29,7 +29,7 @@ import com.bylazar.lights.PanelsLights;
 import com.bylazar.lights.RGBIndicator;
 import com.bylazar.lights.LightsManager;
 
-@TeleOp(name = "NextFTC TeleOp Java Panels", group = "Bot")
+@TeleOp(name = "NextFTC TeleOp Java Panels", group = "Samples")
 public class TeleOpProgramPanels extends NextFTCOpMode {
     public TeleOpProgramPanels() {
         addComponents(

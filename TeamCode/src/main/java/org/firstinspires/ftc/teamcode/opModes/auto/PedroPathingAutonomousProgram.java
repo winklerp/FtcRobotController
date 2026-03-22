@@ -21,7 +21,7 @@ import static dev.nextftc.extensions.pedro.PedroComponent.follower;
 
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 
-@Autonomous(name = "NextFTC PedroPathing Autonomous Java", group = "Bot")
+@Autonomous(name = "NextFTC PedroPathing Autonomous Java", group = "Samples")
 public class PedroPathingAutonomousProgram extends NextFTCOpMode {
 
     private Timer pathTimer, actionTimer, opmodeTimer;

@@ -14,7 +14,7 @@ import dev.nextftc.core.components.SubsystemComponent;
 import dev.nextftc.ftc.components.BulkReadComponent;
 import dev.nextftc.ftc.NextFTCOpMode;
 
-@Autonomous(name = "NextFTC Autonomous Java", group = "Bot")
+@Autonomous(name = "NextFTC Autonomous Java", group = "Samples")
 public class AutonomousProgram extends NextFTCOpMode {
     public AutonomousProgram() {
         addComponents(

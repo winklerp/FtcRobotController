@@ -9,10 +9,8 @@ package org.firstinspires.ftc.teamcode.solverslib.trajectory;
 
 import org.firstinspires.ftc.teamcode.solverslib.kinematics.wpilibkinematics.DifferentialDriveKinematics;
 import org.firstinspires.ftc.teamcode.solverslib.kinematics.wpilibkinematics.MecanumDriveKinematics;
-import org.firstinspires.ftc.teamcode.solverslib.kinematics.wpilibkinematics.SwerveDriveKinematics;
 import org.firstinspires.ftc.teamcode.solverslib.trajectory.constraint.DifferentialDriveKinematicsConstraint;
 import org.firstinspires.ftc.teamcode.solverslib.trajectory.constraint.MecanumDriveKinematicsConstraint;
-import org.firstinspires.ftc.teamcode.solverslib.trajectory.constraint.SwerveDriveKinematicsConstraint;
 import org.firstinspires.ftc.teamcode.solverslib.trajectory.constraint.TrajectoryConstraint;
 
 import java.util.ArrayList;
@@ -91,18 +89,6 @@ public class TrajectoryConfig {
      */
     public TrajectoryConfig setKinematics(MecanumDriveKinematics kinematics) {
         addConstraint(new MecanumDriveKinematicsConstraint(kinematics, m_maxVelocity));
-        return this;
-    }
-
-    /**
-     * Adds a swerve drive kinematics constraint to ensure that
-     * no wheel velocity of a swerve drive goes above the max velocity.
-     *
-     * @param kinematics The swerve drive kinematics.
-     * @return Instance of the current config object.
-     */
-    public TrajectoryConfig setKinematics(SwerveDriveKinematics kinematics) {
-        addConstraint(new SwerveDriveKinematicsConstraint(kinematics, m_maxVelocity));
         return this;
     }
 

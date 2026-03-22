@@ -130,5 +130,4 @@ public abstract class RobotDrive {
     protected double squareInput(double input) {
         return input * Math.abs(input);
     }
-
 }

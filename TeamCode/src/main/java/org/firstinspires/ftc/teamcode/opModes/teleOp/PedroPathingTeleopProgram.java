@@ -17,7 +17,7 @@ import dev.nextftc.ftc.NextFTCOpMode;
 import dev.nextftc.ftc.components.BulkReadComponent;
 import dev.nextftc.hardware.driving.DriverControlledCommand;
 
-@TeleOp(name = "NextFTC PedroPathing TeleOp DriverControlled", group = "Bot")
+@TeleOp(name = "NextFTC PedroPathing TeleOp DriverControlled", group = "Samples")
 public class PedroPathingTeleopProgram extends NextFTCOpMode {
     @IgnoreConfigurable
     private final JoinedTelemetry telemetryM = new JoinedTelemetry(

@@ -2,6 +2,9 @@ package org.firstinspires.ftc.teamcode.opModes.teleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AngularVelocity;
+import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 import org.firstinspires.ftc.teamcode.opModes.components.MyComponent;
 import org.firstinspires.ftc.teamcode.opModes.subSystems.Claw;
 import org.firstinspires.ftc.teamcode.opModes.subSystems.Lift;
@@ -19,9 +22,10 @@ import dev.nextftc.hardware.impl.IMUEx;
 import dev.nextftc.hardware.impl.MotorEx;
 import dev.nextftc.extensions.fateweaver.FateComponent;
 
+import dev.nextftc.hardware.impl.VoltageCompensatingMotor;
 import gay.zharel.fateweaver.log.LogChannel;
 
-@TeleOp(name = "NextFTC TeleOp Java", group = "Bot")
+@TeleOp(name = "NextFTC TeleOp Java", group = "Samples")
 public class TeleOpProgram extends NextFTCOpMode {
     public TeleOpProgram() {
         addComponents(
@@ -39,6 +43,8 @@ public class TeleOpProgram extends NextFTCOpMode {
     private final MotorEx frontRightMotor = new MotorEx("front_right").brakeMode();
     private final MotorEx backLeftMotor = new MotorEx("back_left").brakeMode().reversed();
     private final MotorEx backRightMotor = new MotorEx("back_right").brakeMode();
+    //private final VoltageCompensatingMotor outtakeL = new VoltageCompensatingMotor(backLeftMotor, 0.01, 12);
+    //private final VoltageCompensatingMotor outtakeR = new VoltageCompensatingMotor(backRightMotor, 0.01, 12);
     private IMUEx imu = new IMUEx("imu", Direction.UP, Direction.FORWARD).zeroed();
 
     @Override public void onInit() {
@@ -74,6 +80,7 @@ public class TeleOpProgram extends NextFTCOpMode {
 
         LogChannel<KineticState> stateChannel = FateComponent.createChannel("LiftState",
                                                 KineticState.class);
+
         FateComponent.registerPublisher(stateChannel, Lift.INSTANCE::getState);
         //FateComponent.registerPublisher("LiftState", KineticState.class, Lift.INSTANCE::getState);
 
@@ -103,6 +110,18 @@ public class TeleOpProgram extends NextFTCOpMode {
     }
     @Override public void onUpdate() {
         FateComponent.write("LiftState", Lift.INSTANCE.getState());
+
+        // Retrieve Rotational Angles and Velocities
+        YawPitchRollAngles orientation = imu.getImu().getRobotYawPitchRollAngles();
+        AngularVelocity angularVelocity = imu.getImu().getRobotAngularVelocity(AngleUnit.DEGREES);
+
+        telemetry.addData("Yaw (Z)", "%.2f Deg. (Heading)", orientation.getYaw(AngleUnit.DEGREES));
+        telemetry.addData("Pitch (X)", "%.2f Deg.", orientation.getPitch(AngleUnit.DEGREES));
+        telemetry.addData("Roll (Y)", "%.2f Deg.\n", orientation.getRoll(AngleUnit.DEGREES));
+        telemetry.addData("Yaw (Z) velocity", "%.2f Deg/Sec", angularVelocity.zRotationRate);
+        telemetry.addData("Pitch (X) velocity", "%.2f Deg/Sec", angularVelocity.xRotationRate);
+        telemetry.addData("Roll (Y) velocity", "%.2f Deg/Sec", angularVelocity.yRotationRate);
+        telemetry.update();
     }
 
     @Override public void onStop() {
