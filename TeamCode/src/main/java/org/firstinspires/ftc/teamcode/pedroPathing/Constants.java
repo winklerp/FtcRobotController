@@ -19,29 +19,24 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class Constants {
 
-//  public static FollowerConstants followerConstants = new FollowerConstants();
-
 //    public static FollowerConstants followerConstants = new FollowerConstants()
-//            .mass(6.2)
 //            .forwardZeroPowerAcceleration(-32.551336016582326)
 //            .lateralZeroPowerAcceleration(-47.82231953548479)
-//            //.headingPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))
+//            .headingPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))
 //            //.secondaryHeadingPIDFCoefficients(new PIDFCoefficients(0.1,0,0.01,0))
 //            //.useSecondaryHeadingPIDF(true)
 //            //.translationalPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))
 //            //.secondaryTranslationalPIDFCoefficients(new PIDFCoefficients(0.1,0,0.01,0))
 //            //.useSecondaryTranslationalPIDF(true)
-//            //.drivePIDFCoefficients(new FilteredPIDFCoefficients(0.1,0.0,0.01,0.6,0.0))
+//            .drivePIDFCoefficients(new FilteredPIDFCoefficients(0.1,0.0,0.01,0.6,0.0))
 //            //.secondaryDrivePIDFCoefficients(new FilteredPIDFCoefficients(0.1,0,0.01,0.6,0.01))
 //            //.useSecondaryDrivePIDF(true)
 //            //.driveKalmanFilterModelCovariance(6)
-//            //.driveKalmanFilterDataCovariance(1);
+//            //.driveKalmanFilterDataCovariance(1)
 //            //.centripetalScaling(0.005)
-
+//            .mass(6.2);
 
     public static FollowerConstants followerConstants = new FollowerConstants()
-            .forwardZeroPowerAcceleration(-32.551336016582326)
-            .lateralZeroPowerAcceleration(-47.82231953548479)
             .headingPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))
             //.secondaryHeadingPIDFCoefficients(new PIDFCoefficients(0.1,0,0.01,0))
             //.useSecondaryHeadingPIDF(true)
