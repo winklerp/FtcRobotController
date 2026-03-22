@@ -8,7 +8,7 @@ public class PWM {
     boolean setPwm(Servo servo, double usPwm)
     {
         if (usPwm >= 500.0 && usPwm <= 2500.0) {
-            if (PwmControl.class.isInstance(servo)) {
+            if (servo instanceof PwmControl) {
                 PwmControl pwm = (PwmControl) servo;
                 PwmControl.PwmRange range = pwm.getPwmRange();
                 pwm.setPwmRange(new PwmControl.PwmRange(usPwm, usPwm, range.usFrame));
