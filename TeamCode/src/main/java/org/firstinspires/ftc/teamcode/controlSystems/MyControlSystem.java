@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.controlSystems;
 
-import com.acmerobotics.dashboard.config.Config;
-
 import dev.nextftc.control.ControlSystem;
 import dev.nextftc.control.KineticState;
 import dev.nextftc.control.feedback.FeedbackType;
@@ -11,7 +9,6 @@ import dev.nextftc.control.feedforward.ArmFeedforward;
 import dev.nextftc.control.feedforward.GravityFeedforwardParameters;
 import dev.nextftc.control.interpolators.ConstantInterpolator;
 
-@Config
 public class MyControlSystem {
     public static volatile PIDCoefficients coefficients = new PIDCoefficients(1, 0,0);
     public ControlSystem controlSystem = ControlSystem.builder()

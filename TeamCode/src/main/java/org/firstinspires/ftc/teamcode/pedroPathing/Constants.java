@@ -31,9 +31,8 @@ public class Constants {
             //.drivePIDFCoefficients(new FilteredPIDFCoefficients(0.1,0.0,0.01,0.6,0.0))
             //.secondaryDrivePIDFCoefficients(new FilteredPIDFCoefficients(0.1,0,0.01,0.6,0.01))
             //.centripetalScaling(0.005)
-            //.driveKalmanFilterModelCovariance(6)
-            //.driveKalmanFilterDataCovariance(1)
-            ;
+            .driveKalmanFilterModelCovariance(6)
+            .driveKalmanFilterDataCovariance(1);
 
     public static PathConstraints pathConstraints = new PathConstraints(
             0.99, 100, 1, 1);
@@ -49,8 +48,7 @@ public class Constants {
             .rightFrontMotorDirection(DcMotorSimple.Direction.FORWARD)
             .rightRearMotorDirection(DcMotorSimple.Direction.FORWARD)
             .xVelocity(47.608142762672244)
-            .yVelocity(41.910719984159684)
-            ;
+            .yVelocity(41.910719984159684);
 
     public static PinpointConstants localizerConstants = new PinpointConstants()
             //.forwardPodY(-3.346)  // inches

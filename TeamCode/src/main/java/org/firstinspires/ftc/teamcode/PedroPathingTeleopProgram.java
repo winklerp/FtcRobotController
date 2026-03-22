@@ -2,8 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import static dev.nextftc.extensions.pedro.PedroComponent.follower;
 
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.bylazar.configurables.annotations.IgnoreConfigurable;
 import com.bylazar.telemetry.JoinedTelemetry;
 import com.bylazar.telemetry.PanelsTelemetry;
