@@ -22,8 +22,8 @@ public class Constants {
 
     public static FollowerConstants followerConstants = new FollowerConstants()
             .mass(6.2)
-            //.forwardZeroPowerAcceleration(deceleration1)
-            //.lateralZeroPowerAcceleration(deceleration2)
+            .forwardZeroPowerAcceleration(-32.551336016582326)
+            .lateralZeroPowerAcceleration(-47.82231953548479)
             //.translationalPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))
             //.secondaryTranslationalPIDFCoefficients(new PIDFCoefficients(0.1,0,0.01,0))
             //.headingPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))
@@ -31,6 +31,8 @@ public class Constants {
             //.drivePIDFCoefficients(new FilteredPIDFCoefficients(0.1,0.0,0.01,0.6,0.0))
             //.secondaryDrivePIDFCoefficients(new FilteredPIDFCoefficients(0.1,0,0.01,0.6,0.01))
             //.centripetalScaling(0.005)
+            //.driveKalmanFilterModelCovariance(6)
+            //.driveKalmanFilterDataCovariance(1)
             ;
 
     public static PathConstraints pathConstraints = new PathConstraints(
@@ -38,21 +40,23 @@ public class Constants {
 
     public static MecanumConstants driveConstants = new MecanumConstants()
             .maxPower(1)
-            .rightFrontMotorName("front_right")
-            .rightRearMotorName("back_right")
-            .leftRearMotorName("back_left")
-            .leftFrontMotorName("front_left")
+            .rightFrontMotorName("frontRightMotor")
+            .rightRearMotorName("backRightMotor")
+            .leftRearMotorName("backLeftMotor")
+            .leftFrontMotorName("frontLeftMotor")
             .leftFrontMotorDirection(DcMotorSimple.Direction.REVERSE)
             .leftRearMotorDirection(DcMotorSimple.Direction.REVERSE)
             .rightFrontMotorDirection(DcMotorSimple.Direction.FORWARD)
             .rightRearMotorDirection(DcMotorSimple.Direction.FORWARD)
-            //.xVelocity(velocity1)
-            //.yVelocity(velocity2)
+            .xVelocity(47.608142762672244)
+            .yVelocity(41.910719984159684)
             ;
 
     public static PinpointConstants localizerConstants = new PinpointConstants()
-            .forwardPodY(-5)
-            .strafePodX(0.5)
+            //.forwardPodY(-3.346)  // inches
+            .forwardPodY(-85)
+            //.strafePodX(-6.397)   // inches
+            .strafePodX(-162.5)
             .distanceUnit(DistanceUnit.MM)
             .hardwareMapName("pinpoint")
             .encoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD)
