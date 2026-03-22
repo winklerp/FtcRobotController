@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.auto;
 
 import com.pedropathing.geometry.BezierLine;
 import com.pedropathing.geometry.Pose;
@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import dev.nextftc.core.commands.Command;
 import dev.nextftc.core.commands.delays.Delay;
-import dev.nextftc.core.commands.groups.ParallelGroup;
 import dev.nextftc.core.commands.groups.SequentialGroup;
+import dev.nextftc.core.components.BindingsComponent;
 import dev.nextftc.extensions.pedro.FollowPath;
 import dev.nextftc.extensions.pedro.PedroComponent;
 import dev.nextftc.ftc.NextFTCOpMode;
@@ -21,7 +21,7 @@ import static dev.nextftc.extensions.pedro.PedroComponent.follower;
 
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 
-@Autonomous(name = "NextFTC PedroPathing Autonomous Program Java", group = "Bot")
+@Autonomous(name = "NextFTC PedroPathing Autonomous Java", group = "Bot")
 public class PedroPathingAutonomousProgram extends NextFTCOpMode {
 
     private Timer pathTimer, actionTimer, opmodeTimer;
@@ -39,7 +39,8 @@ public class PedroPathingAutonomousProgram extends NextFTCOpMode {
     public PedroPathingAutonomousProgram() {
         addComponents(
                 new PedroComponent(Constants::createFollower),
-                BulkReadComponent.INSTANCE
+                BulkReadComponent.INSTANCE,
+                BindingsComponent.INSTANCE
         );
     }
 

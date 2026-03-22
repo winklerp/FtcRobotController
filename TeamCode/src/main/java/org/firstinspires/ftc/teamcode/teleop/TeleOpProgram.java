@@ -1,29 +1,19 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.robot.Robot;
 
-import org.firstinspires.ftc.teamcode.commands.MyCommand;
-import org.firstinspires.ftc.teamcode.commands.PositionsCommands;
 import org.firstinspires.ftc.teamcode.components.MyComponent;
-import org.firstinspires.ftc.teamcode.controlSystems.MyControlSystem;
-import org.firstinspires.ftc.teamcode.subSystemGroups.MySubsystemGroup;
 import org.firstinspires.ftc.teamcode.subSystems.Claw;
 import org.firstinspires.ftc.teamcode.subSystems.Lift;
 
 import dev.nextftc.control.KineticState;
 import dev.nextftc.core.commands.Command;
-import dev.nextftc.core.commands.CommandManager;
-import dev.nextftc.core.commands.utility.LambdaCommand;
 import dev.nextftc.core.components.BindingsComponent;
 import dev.nextftc.core.components.SubsystemComponent;
 import dev.nextftc.ftc.Gamepads;
 import dev.nextftc.ftc.NextFTCOpMode;
 import dev.nextftc.ftc.components.BulkReadComponent;
-import dev.nextftc.hardware.driving.FieldCentric;
-import dev.nextftc.hardware.driving.HolonomicMode;
 import dev.nextftc.hardware.driving.MecanumDriverControlled;
-import dev.nextftc.hardware.driving.RobotCentric;
 import dev.nextftc.hardware.impl.Direction;
 import dev.nextftc.hardware.impl.IMUEx;
 import dev.nextftc.hardware.impl.MotorEx;
@@ -31,7 +21,7 @@ import dev.nextftc.extensions.fateweaver.FateComponent;
 
 import gay.zharel.fateweaver.log.LogChannel;
 
-@TeleOp(name = "NextFTC TeleOp Program Java", group = "Bot")
+@TeleOp(name = "NextFTC TeleOp Java", group = "Bot")
 public class TeleOpProgram extends NextFTCOpMode {
     public TeleOpProgram() {
         addComponents(

@@ -1,10 +1,13 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.teleop;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import java.util.concurrent.atomic.AtomicReference;
+
 import org.firstinspires.ftc.robotcore.external.function.Consumer;
 import org.firstinspires.ftc.robotcore.external.function.Continuation;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.BuiltinCameraDirection;
@@ -12,10 +15,13 @@ import org.firstinspires.ftc.robotcore.external.stream.CameraStreamSource;
 import org.firstinspires.ftc.robotcore.internal.camera.calibration.CameraCalibration;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.VisionProcessor;
+
+import com.bylazar.camerastream.PanelsCameraStream;
+
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;
 
-@Autonomous(name = "NextFTC Autonomous Program Java Camera FTC Dashboard", group = "Bot")
+@TeleOp(name = "Camera Teleop Java Panels", group = "Bot")
 public class VisionPortalStreamingOpMode extends LinearOpMode {
     public static class CameraStreamProcessor implements VisionProcessor, CameraStreamSource {
         private final AtomicReference<Bitmap> lastFrame =
@@ -30,7 +36,9 @@ public class VisionPortalStreamingOpMode extends LinearOpMode {
         public Object processFrame(Mat frame, long captureTimeNanos) {
             Bitmap b = Bitmap.createBitmap(frame.width(), frame.height(), Bitmap.Config.RGB_565);
             Utils.matToBitmap(frame, b);
+
             lastFrame.set(b);
+
             return null;
         }
 
@@ -56,12 +64,14 @@ public class VisionPortalStreamingOpMode extends LinearOpMode {
                 .setCamera(BuiltinCameraDirection.BACK)
                 .build();
 
-        //FtcDashboard.getInstance().startCameraStream(processor, 0);
+        PanelsCameraStream.INSTANCE.startStream(processor, 0);
 
         waitForStart();
 
         while (opModeIsActive()) {
             sleep(100L);
         }
+
+        PanelsCameraStream.INSTANCE.stopStream();
     }
 }

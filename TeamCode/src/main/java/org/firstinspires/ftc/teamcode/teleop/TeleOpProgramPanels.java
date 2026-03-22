@@ -1,10 +1,9 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.teleop;
 
 
 import static java.lang.Math.PI;
 import static java.lang.Math.sin;
 
-import com.bylazar.telemetry.TelemetryManager;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -29,9 +28,8 @@ import com.bylazar.lights.Headlight;
 import com.bylazar.lights.PanelsLights;
 import com.bylazar.lights.RGBIndicator;
 import com.bylazar.lights.LightsManager;
-import com.bylazar.telemetry.TelemetryManager.TelemetryWrapper;
 
-@TeleOp(name = "NextFTC TeleOp Program Java Panels", group = "Bot")
+@TeleOp(name = "NextFTC TeleOp Java Panels", group = "Bot")
 public class TeleOpProgramPanels extends NextFTCOpMode {
     public TeleOpProgramPanels() {
         addComponents(
