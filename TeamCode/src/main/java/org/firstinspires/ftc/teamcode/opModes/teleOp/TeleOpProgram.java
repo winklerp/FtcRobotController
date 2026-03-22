@@ -1,0 +1,111 @@
+package org.firstinspires.ftc.teamcode.opModes.teleOp;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.opModes.components.MyComponent;
+import org.firstinspires.ftc.teamcode.opModes.subSystems.Claw;
+import org.firstinspires.ftc.teamcode.opModes.subSystems.Lift;
+
+import dev.nextftc.control.KineticState;
+import dev.nextftc.core.commands.Command;
+import dev.nextftc.core.components.BindingsComponent;
+import dev.nextftc.core.components.SubsystemComponent;
+import dev.nextftc.ftc.Gamepads;
+import dev.nextftc.ftc.NextFTCOpMode;
+import dev.nextftc.ftc.components.BulkReadComponent;
+import dev.nextftc.hardware.driving.MecanumDriverControlled;
+import dev.nextftc.hardware.impl.Direction;
+import dev.nextftc.hardware.impl.IMUEx;
+import dev.nextftc.hardware.impl.MotorEx;
+import dev.nextftc.extensions.fateweaver.FateComponent;
+
+import gay.zharel.fateweaver.log.LogChannel;
+
+@TeleOp(name = "NextFTC TeleOp Java", group = "Bot")
+public class TeleOpProgram extends NextFTCOpMode {
+    public TeleOpProgram() {
+        addComponents(
+                new SubsystemComponent(Lift.INSTANCE, Claw.INSTANCE),
+                BulkReadComponent.INSTANCE,
+                BindingsComponent.INSTANCE,
+                FateComponent.INSTANCE,
+                new MyComponent()
+                //new SubsystemComponent(MySubsystemGroup.INSTANCE)
+        );
+    }
+
+    // change the names and directions to suit your robot
+    private final MotorEx frontLeftMotor = new MotorEx("front_left").brakeMode().reversed();
+    private final MotorEx frontRightMotor = new MotorEx("front_right").brakeMode();
+    private final MotorEx backLeftMotor = new MotorEx("back_left").brakeMode().reversed();
+    private final MotorEx backRightMotor = new MotorEx("back_right").brakeMode();
+    private IMUEx imu = new IMUEx("imu", Direction.UP, Direction.FORWARD).zeroed();
+
+    @Override public void onInit() {
+
+    }
+    @Override public void onWaitForStart() { }
+    @Override
+    public void onStartButtonPressed() {
+        Command driverControlled = new MecanumDriverControlled(
+                frontLeftMotor,
+                frontRightMotor,
+                backLeftMotor,
+                backRightMotor,
+                Gamepads.gamepad1().leftStickY().negate(),
+                Gamepads.gamepad1().leftStickX(),
+                Gamepads.gamepad1().rightStickX()
+                //new FieldCentric(imu)
+        );
+        driverControlled.schedule();
+
+        Gamepads.gamepad2().dpadUp()
+                .whenBecomesTrue(Lift.INSTANCE.toHigh)
+                .whenBecomesFalse(Claw.INSTANCE.open);
+
+        Gamepads.gamepad2().rightTrigger().greaterThan(0.2)
+                .whenBecomesTrue(
+                        Claw.INSTANCE.close.then(Lift.INSTANCE.toHigh)
+                );
+
+        Gamepads.gamepad2().leftBumper().whenBecomesTrue(
+                Claw.INSTANCE.open.and(Lift.INSTANCE.toLow)
+        );
+
+        LogChannel<KineticState> stateChannel = FateComponent.createChannel("LiftState",
+                                                KineticState.class);
+        FateComponent.registerPublisher(stateChannel, Lift.INSTANCE::getState);
+        //FateComponent.registerPublisher("LiftState", KineticState.class, Lift.INSTANCE::getState);
+
+//        Command myLambdaCommand = new LambdaCommand()
+//                .setStart(() -> {
+//                    // Runs on start
+//                })
+//                .setUpdate(() -> {
+//                    // Runs on update
+//                })
+//                .setStop(interrupted -> {
+//                    // Runs on stop
+//                })
+//                .setIsDone(() -> true) // Returns if the command has finished
+//                .requires(/* subsystems the command implements */)
+//                .setInterruptible(true)
+//                .named("My Command"); // sets the name of the command; optional
+
+        //CommandManager.INSTANCE.scheduleCommand(myLambdaCommand);
+        //myLambdaCommand.schedule();
+
+        //Command myCommand = new MyCommand(); // Or a LambdaCommand
+        //CommandManager.INSTANCE.scheduleCommand(myCommand);
+        //myCommand.schedule();
+
+        //PositionsCommands.runToPosition(new MyControlSystem().controlSystem, 10).schedule();
+    }
+    @Override public void onUpdate() {
+        FateComponent.write("LiftState", Lift.INSTANCE.getState());
+    }
+
+    @Override public void onStop() {
+
+    }
+}

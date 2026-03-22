@@ -20,6 +20,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 public class Constants {
 
 //    public static FollowerConstants followerConstants = new FollowerConstants()
+//            .mass(6.2)
 //            .forwardZeroPowerAcceleration(-32.551336016582326)
 //            .lateralZeroPowerAcceleration(-47.82231953548479)
 //            .headingPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))
@@ -33,8 +34,7 @@ public class Constants {
 //            //.useSecondaryDrivePIDF(true)
 //            //.driveKalmanFilterModelCovariance(6)
 //            //.driveKalmanFilterDataCovariance(1)
-//            //.centripetalScaling(0.005)
-//            .mass(6.2);
+//            //.centripetalScaling(0.005);
 
     public static FollowerConstants followerConstants = new FollowerConstants()
             .headingPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))

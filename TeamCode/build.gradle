@@ -71,4 +71,9 @@ dependencies {
     implementation 'com.skeletonarmyftc.marrow:core:1.0.0'
 
     implementation 'dev.frozenmilk.sinister:Sloth:0.2.4'
+
+    // dependencies for solverslib
+    implementation('org.ejml:ejml-simple:0.44.0') {
+        exclude group: 'org.ejml', module: 'ejml-all'
+    }
 }
