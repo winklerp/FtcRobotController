@@ -40,5 +40,7 @@ public class AutonomousProgram extends NextFTCOpMode {
     }
 
     @Override
-    public void onStartButtonPressed() { autonomousRoutine().schedule(); }
+    public void onStartButtonPressed() {
+        autonomousRoutine().schedule();
+    }
 }

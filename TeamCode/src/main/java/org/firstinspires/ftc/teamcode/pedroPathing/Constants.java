@@ -40,7 +40,8 @@ public class Constants {
             .headingPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))
             //.secondaryHeadingPIDFCoefficients(new PIDFCoefficients(0.1,0,0.01,0))
             //.useSecondaryHeadingPIDF(true)
-            .predictiveBrakingCoefficients(new PredictiveBrakingCoefficients(0.1, 0.04, 0.0016))
+            .predictiveBrakingCoefficients(
+                    new PredictiveBrakingCoefficients(0.1, 0.04, 0.0016))
             .centripetalScaling(0);
 
 //    public static PathConstraints pathConstraints = new PathConstraints(
