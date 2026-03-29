@@ -34,14 +34,16 @@ public class Constants {
 //            //.useSecondaryDrivePIDF(true)
 //            //.driveKalmanFilterModelCovariance(6)
 //            //.driveKalmanFilterDataCovariance(1)
-//            //.centripetalScaling(0.005);
+//            //.centripetalScaling(0.001);
 
     public static FollowerConstants followerConstants = new FollowerConstants()
             .headingPIDFCoefficients(new PIDFCoefficients(0.1, 0, 0.01, 0))
             //.secondaryHeadingPIDFCoefficients(new PIDFCoefficients(0.1,0,0.01,0))
             //.useSecondaryHeadingPIDF(true)
             .predictiveBrakingCoefficients(
-                    new PredictiveBrakingCoefficients(0.1, 0.04, 0.0016))
+                    new PredictiveBrakingCoefficients(0.2,
+                                                    0.056938138138598923056,
+                                                 0.001450346883814661))
             .centripetalScaling(0);
 
 //    public static PathConstraints pathConstraints = new PathConstraints(
