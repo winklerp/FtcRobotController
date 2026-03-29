@@ -40,7 +40,8 @@ public class PedroPathingTeleopProgram extends NextFTCOpMode {
         DriverControlledCommand driverControlled = new PedroDriverControlled(
                 Gamepads.gamepad1().leftStickY().negate(),
                 Gamepads.gamepad1().leftStickX().negate(),
-                Gamepads.gamepad1().rightStickX().negate()
+                Gamepads.gamepad1().rightStickX().negate(),
+                true
         );
         driverControlled.schedule();
     }
