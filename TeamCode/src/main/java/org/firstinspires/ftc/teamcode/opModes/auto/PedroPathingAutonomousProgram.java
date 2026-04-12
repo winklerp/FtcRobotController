@@ -53,8 +53,10 @@ public class PedroPathingAutonomousProgram extends NextFTCOpMode {
         buildPaths();
         follower().setStartingPose(startPose);
     }
+
     // init_loop
     @Override public void onWaitForStart() { }
+
     // start
     @Override public void onStartButtonPressed() {
         opmodeTimer.resetTimer();
@@ -62,6 +64,7 @@ public class PedroPathingAutonomousProgram extends NextFTCOpMode {
 
         autonomousRoutine().schedule();
     }
+
     // loop
     @Override public void onUpdate() {
         // These loop the movements of the robot, these must be called continuously in order to work
@@ -79,6 +82,7 @@ public class PedroPathingAutonomousProgram extends NextFTCOpMode {
         telemetry.addData("heading", follower().getPose().getHeading());
         telemetry.update();
     }
+
     // stop
     @Override public void onStop() { }
 
@@ -208,6 +212,7 @@ public class PedroPathingAutonomousProgram extends NextFTCOpMode {
                 break;
         }
     }
+
     /** These change the states of the paths and actions. It will also reset the timers of the individual switches **/
     public void setPathState(int pState) {
         pathState = pState;
