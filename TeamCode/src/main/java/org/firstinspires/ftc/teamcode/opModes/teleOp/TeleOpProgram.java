@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.opModes.teleOp;
 
+import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AngularVelocity;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 import org.firstinspires.ftc.teamcode.opModes.components.MyComponent;
 import org.firstinspires.ftc.teamcode.opModes.subSystems.Claw;
@@ -47,8 +49,35 @@ public class TeleOpProgram extends NextFTCOpMode {
     //private final VoltageCompensatingMotor outtakeR = new VoltageCompensatingMotor(backRightMotor, 0.01, 12);
     private IMUEx imu = new IMUEx("imu", Direction.UP, Direction.FORWARD).zeroed();
 
-    @Override public void onInit() {
+    private GoBildaPinpointDriver odo; // Declare OpMode member for the Odometry Computer
 
+    @Override public void onInit() {
+        odo = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
+
+        /*
+        Before running the robot, recalibrate the IMU. This needs to happen when the robot is stationary
+        The IMU will automatically calibrate when first powered on, but recalibrating before running
+        the robot is a good idea to ensure that the calibration is "good".
+        resetPosAndIMU will reset the position to 0,0,0 and also recalibrate the IMU.
+        This is recommended before you run your autonomous, as a bad initial calibration can cause
+        an incorrect starting value for x, y, and heading.
+
+        On your Pinpoint, most commonly that amount of drift (especially intermittently) is caused by
+        a bad zero offset calibration. Having a bad zero offset calibration happens any time the Pinpoint is asked
+        to calibrate while the device is moving. It automatically calibrates when it first receives power, and any
+        time you call resetPosAndIMU() or recalibrateIMU(). I'd recommend making sure that you're calling one of
+        those functions when the robot is perfectly still before the match starts, and make sure you aren't
+        calling them at any other time during your OpModes.
+         */
+        //odo.recalibrateIMU();
+        odo.resetPosAndIMU();
+
+        telemetry.addData("Status", "Initialized");
+        telemetry.addData("X offset", odo.getXOffset(DistanceUnit.MM));
+        telemetry.addData("Y offset", odo.getYOffset(DistanceUnit.MM));
+        telemetry.addData("Device Version Number:", odo.getDeviceVersion());
+        telemetry.addData("Heading Scalar", odo.getYawScalar());
+        telemetry.update();
     }
     @Override public void onWaitForStart() { }
     @Override
